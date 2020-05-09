@@ -3,6 +3,7 @@ import Transition from "./Transition.js";
 
 const DefaultLayout = function({children}) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isMobileMenuShown, setIsMobileMenuShown] = useState(false);
   return (
     <div>
       <div className="bg-gray-800 pb-32">
@@ -86,14 +87,15 @@ const DefaultLayout = function({children}) {
                 <div className="-mr-2 flex md:hidden">
                   {/* Mobile menu button */}
                   <button
+                    onClick={() => setIsMobileMenuShown(!isMobileMenuShown)}
                     className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
                     {/* Menu open: "hidden", Menu closed: "block" */}
-                    <svg className="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <svg className={`${isMobileMenuShown ? 'hidden' : 'block'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                             d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                     {/* Menu open: "block", Menu closed: "hidden" */}
-                    <svg className="hidden h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <svg className={`${isMobileMenuShown ? 'block' : 'hidden'} h-6 w-6`} stroke="currentColor" fill="none" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                   </button>
@@ -107,7 +109,7 @@ const DefaultLayout = function({children}) {
 
             Open: "block", closed: "hidden"
           */}
-          <div className="hidden border-b border-gray-700 md:hidden">
+          <div className={`${isMobileMenuShown ? 'block' : 'hidden'} border-b border-gray-700 md:${isMobileMenuShown}`}>
             <div className="px-2 py-3 sm:px-3">
               <a href="#"
                  className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Dashboard</a>
