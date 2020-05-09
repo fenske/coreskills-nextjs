@@ -1,18 +1,14 @@
-import Nav from '../components/nav'
-import Head from 'next/head'
+import {getLayout} from "../components/DefaultLayout";
 
-export default function IndexPage() {
-  return (
-    <div>
-      <Head>
-        <title>CoreSkills</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-      </Head>
-      <Nav />
-      <div className="hero">
-        <h1 className="title">Next.js + Tailwind CSS</h1>
-      </div>
+const IndexPage = () => (
+  <div>
+    <div className="hero">
+      <h1 className="title">Next.js + Tailwind CSS</h1>
     </div>
-  )
-}
+  </div>
+);
+
+IndexPage.title = 'CoreSkills';
+IndexPage.getLayout = getLayout;
+
+export default IndexPage;
