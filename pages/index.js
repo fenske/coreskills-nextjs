@@ -3,7 +3,7 @@ import {getLayout} from "../components/DefaultLayout";
 const IndexPage = () => (
   <div>
     <div className="hero">
-      <h1 className="title">Next.js + Tailwind CSS</h1>
+      <h1 className="text-5xl text-center text-gray-900">Next.js + TailwindUI</h1>
     </div>
   </div>
 );
